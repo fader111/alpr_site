@@ -55,9 +55,9 @@ for short_file_name in files:
         # draw license plate bbox
         cv2.rectangle(pic, plt_pt1, plt_pt2, green, 2)
         cv2.putText(pic, vecl_type + " " + str(score),
-                    (plt_pt1[0], plt_pt1[1]-42), cv2.FONT_HERSHEY_SIMPLEX, 1, blue, 2)
+                    (plt_pt1[0], plt_pt1[1]-42), cv2.FONT_HERSHEY_SIMPLEX, 0.6, blue, 2)
         cv2.putText(pic, plate_text, (plt_pt1[0], plt_pt1[1]-10),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, red, 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, red, 2)
         # cv2.imshow(fname, pic)
         cv2.imshow('pic', pic)
         k = cv2.waitKey()
