@@ -10,13 +10,16 @@ green = (0, 255, 0)
 red = (0, 0, 255)
 blue = (255, 0, 0)
 
-regions = ['ru']  # Change to your country
+regions = ['ru']  # Change to your country!
 # directory = "C:/Users/ataranov/Downloads/check (1)/check/check_1/"
-directory = "C:/Users/ataranov/Projects/datasets/cars2_corrected/"
+# directory = "E:/datasets/cars_corrected/"
+# directory = "C:/Users/Anton/Downloads/complex_21_winter/4/"
+directory = "C:/Users/Anton/Projects/alpr_site_plates_segmentation/saved_cars2/"
+# directory = "C:/Users/Anton/Downloads/complex_9_winter/1/"
 files = os.listdir(directory)
 plt_marg = 10 # plate bbox margin, px
 
-for short_file_name in files:
+for short_file_name in files[:]:
     # print(short_file_name)
     fname = directory + short_file_name
     with open(fname, 'rb') as fp:
@@ -29,6 +32,8 @@ for short_file_name in files:
     pprint(response.json())
     ans = response.json()
     pic = cv2.imread(fname)
+    if not 'results' in ans: 
+        continue
     if ans["results"] != []:
         plt_pt1 =   ans["results"][0]["box"]["xmin"]-plt_marg, \
                     ans["results"][0]["box"]["ymin"]-plt_marg
